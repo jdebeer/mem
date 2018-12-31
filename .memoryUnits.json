@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "question": "How many countries are there in Africa?",
+    "type": "single",
+    "correctAnswer": 54
+  },
+  {
+    "id": 2,
+    "question": "How many regions are there in Africa?",
+    "type": "single",
+    "correctAnswer": 6
+  },
+  {
+    "id": 3,
+    "question": "Name all the geographic regions of Africa",
+    "type": "multiple",
+    "correctAnswer": ["Southern", "Northern", "Sahel", "Eastern", "Western", "Central"]
+  },
+  {
+    "id": 4,
+    "question": "How many countries are in the Northern region of Africa?",
+    "type": "single",
+    "correctAnswer": 5
+  },
+  {
+    "id": 5,
+    "question": "Name all the countries in the Northern region of Africa",
+    "type": "multiple",
+    "correctAnswer": ["Algeria", "Egypt", "Libya", "Morocco", "Tunisia"]
+  },
+  {
+    "id": 6,
+    "question": "How many countries are in the Central region of Africa?",
+    "type": "single",
+    "correctAnswer": 8
+  },
+  {
+    "id": 7,
+    "question": "Name all the countries in the Central region of Africa",
+    "type": "multiple",
+    "correctAnswer": ["Angola", "Central African Republic (CAR)", "Democratic Republic of the Congo (DRC)", "Republic of the Congo (Congo)", "Equatorial Guinea", "Gabon", "Sao Tome and Principe", "South Sudan"]
+  },
+  {
+    "id": 8,
+    "question": "How many countries are in the Western region of Africa?",
+    "type": "single",
+    "correctAnswer": 14
+  },
+  {
+    "id": 9,
+    "question": "Name all the countries in the Western region of Africa",
+    "type": "multiple",
+    "correctAnswer": ["Benin", "Burkina Faso", "Cabo Verde", "Cameroon", "Cote d'Ivoire", "Gambia", "Ghana", "Guinea", "Guinea-Bissau", "Liberia", "Nigeria", "Senegal", "Sierra Leone", "Togo"]
+  },
+  {
+    "id": 10,
+    "question": "How many countries are in the Southern region of Africa?",
+    "type": "single",
+    "correctAnswer": 9
+  },
+  {
+    "id": 11,
+    "question": "Name all the countries in the Southern region of Africa",
+    "type": "multiple",
+    "correctAnswer": ["Botswana", "Eswatini (formerly Swaziland)", "Lesotho", "Malawi", "Mozambique", "Namibia", "South Africa", "Zambia", "Zimbabwe"]
+  },
+  {
+    "id": 12,
+    "question": "How many countries are in the Eastern region of Africa?",
+    "type": "single",
+    "correctAnswer": 13
+  },
+  {
+    "id": 13,
+    "question": "Name all the countries in the Eastern region of Africa",
+    "type": "multiple",
+    "correctAnswer": ["Burundi", "Comoros", "Djibouti", "Eritrea", "Ethiopia", "Kenya", "Madagascar", "Mauritius", "Rwanda", "Seychelles", "Somalia", "Tanzania", "Uganda"]
+  },
+  {
+    "id": 14,
+    "question": "How many countries are in the Sahel region of Africa?",
+    "type": "single",
+    "correctAnswer": 5
+  },
+  {
+    "id": 15,
+    "question": "Name all the countries in the Sahel region of Africa",
+    "type": "multiple",
+    "correctAnswer": ["Chad", "Mali", "Mauritania", "Niger", "Sudan"]
+  }
+]
