@@ -59,33 +59,33 @@ according to theory (https://en.wikipedia.org/wiki/The_Seven_Sins_of_Memory)
 
 there are seven categories of memory failure, and 2 kinds:
 
-kinds
+##### kinds
 
 1. failure of omission
-  - idea cannot be recalled; brain has omitted the memory
+    - idea cannot be recalled; brain has omitted the memory
 2. failure of comission
-  - idea cannot be correctly recalled in either fidelity or accuracy
+    - idea cannot be correctly recalled in either fidelity or accuracy
 
-categories
+##### categories
 
 1. transience
-  - general deterioration of specific memory over time
+    - general deterioration of specific memory over time
 2. absent-mindedness
-  - lack of attentive memory like location of one's glasses
+    - lack of attentive memory like location of one's glasses
 3. blocking
-  - brain tries to retrieve or encode information but another memory interferes
+    - brain tries to retrieve or encode information but another memory interferes
     with it
 4. misattribution
-  - a memory is correct but it is attributed to the wrong source, such as
+    - a memory is correct but it is attributed to the wrong source, such as
     confusing the events of a movie with real life events
 5. suggestibility
-  - a memory that has been formed through the opinions of others that the event
+    - a memory that has been formed through the opinions of others that the event
     did indeed occur or the fact is indeed true
 6. bias
-  - a memory that is recalled in the context of one current opions and worldview
+    - a memory that is recalled in the context of one current opions and worldview
     rather than at the time of the event or context of the fact
 7. persistence
-  - failure to recall memory because it is disturbing. such as a blunder at work
+    - failure to recall memory because it is disturbing. such as a blunder at work
 
 
 
