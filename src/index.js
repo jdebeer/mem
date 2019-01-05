@@ -36,4 +36,18 @@ program
     reviewProgram.start();
   });
 
+program
+  .command('state')
+  .alias('s')
+  .description('The current state of your memory')
+  .action(() => {
+
+    let strategy = 'local';
+    let memoryFolderPath = path.join(__dirname, '../');
+    const memoryStore = new MemoryStore({ strategy, memoryFolderPath });
+
+    memoryStore.getState();
+
+  });
+
 program.parse(process.argv);

@@ -7,10 +7,13 @@ class ReviewProgram {
   continue() {
     const nextQuestion = this.memoryStore.getNextQuestion();
     const prompt = new QuestionAnswerCycle({ question: nextQuestion });
+    const startTime = Date.now();
     prompt.start().then(activation => {
       this.memoryStore.newActivation({
         successful: activation.correct,
-        unitId: nextQuestion.id
+        unitId: nextQuestion.id,
+        startTime,
+        endTime: Date.now()
       });
       this.continue();
     });

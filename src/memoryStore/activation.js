@@ -1,8 +1,8 @@
 class Activation {
-  constructor({ date, timeToActivate, successful = false, input }) {
+  constructor({ successful = false, input, startTime, endTime }) {
 
-    this.date = date;
-    this.timeToActivate = timeToActivate;  // elapsed time to receive definitive `successful` metric
+    this.startTime = startTime;
+    this.endTime = endTime;
     this.successful = successful;
     this.input = input; // string or array of objects { value, inputDate }
   }

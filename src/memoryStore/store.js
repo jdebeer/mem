@@ -5,7 +5,7 @@ class MemoryStore {
   constructor({
     strategy,
     memoryFolderPath,
-    initialMemoryDecayRate = 0.004
+    initialMemoryDecayRate = 0.0008
   }) {
     this.strategy = strategy;
     this.memoryFolderPath = memoryFolderPath;
@@ -56,10 +56,19 @@ class MemoryStore {
     }
   }
 
+  getState() {
+    const table = Object.values(this.nodes).map(node => {
+      console.log(node.score(), node.represents, node.activations.length);
+    });
+  }
+
   getNextQuestion() {
     // check memory store for weakest
     let nodeWithLowestScore;
     let lowestScore;
+
+    let nodeWithLowestScoreWithActivations;
+    let lowestScoreWithActivations = 10000;
     for (const id in this.nodes) {
       const score = this.nodes[id].score();
       console.log('score for id', id, score);
@@ -67,10 +76,22 @@ class MemoryStore {
         lowestScore = score;
         nodeWithLowestScore = id;
       }
+      if (score < lowestScoreWithActivations && this.nodes[id].activations.length) {
+        lowestScoreWithActivations = score;
+        nodeWithLowestScoreWithActivations = id;
+      }
     }
-    console.log('node with lowest score', nodeWithLowestScore);
-    console.log('lowest score', lowestScore);
-    const nextQuestion = this.memoryUnits.find(unit => +unit.id === +nodeWithLowestScore);
+
+    let nextQuestionId = nodeWithLowestScore;
+    let nextQuestionCurrentScore = lowestScore;
+    if (lowestScoreWithActivations < 0.8) {
+      nextQuestionId = nodeWithLowestScoreWithActivations;
+      nextQuestionCurrentScore = lowestScoreWithActivations;
+    }
+
+    console.log('next question id', nextQuestionId);
+    console.log('score of node of next question', nextQuestionCurrentScore);
+    const nextQuestion = this.memoryUnits.find(unit => +unit.id === +nextQuestionId);
     // console.log('memory units', this.memoryUnits);
     // console.log('node witih lowest score', nodeWithLowestScore);
     // console.log('next question', nextQuestion);
