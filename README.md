@@ -1,6 +1,3 @@
-WARNING: This is not yet functional. Coming soon :)
---
-
 # mem
 
 commit and persist structured information in your human memory
