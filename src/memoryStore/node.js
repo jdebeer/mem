@@ -3,6 +3,8 @@ const Activation = require('./activation');
 class MemoryNode {
   constructor({ activations = [], unitId, type, value, represents }, config) {
 
+    this.retentionThreshold = 0.95; // A+
+
     this.represents = represents;
     this.value = value;
     this.type = type;
@@ -13,63 +15,61 @@ class MemoryNode {
       return new Activation(activation);
     })
   }
+  pimsTimeInterval(intervalNumber) {
+    // https://en.wikipedia.org/wiki/Spaced_repetition
+    const intervals = {
+      0: 5, // 5 seconds
+      1: 25, // 25 seconds
+      2: 120, // 2 minutes
+      3: 600, // 10 minutes
+      4: 3600, // 1 hour
+      5: 18000, // 5 hours
+      6: 86400, // 1 day
+      7: 432000, // 5 days
+      8: 2160000, // 25 days
+      9: 10368000, // 4 months
+      10: 63072000 // 2 years
+    };
+    if (intervalNumber > 10) {
+      return intervals[10];
+    }
+    return intervals[intervalNumber];
+  }
+  pimsStabilityInterval(intervalNumber) {
+    let interval;
+    if (intervalNumber === 0) {
+      interval = this.pimsTimeInterval(0);
+    }
+    else {
+      interval = this.pimsTimeInterval(intervalNumber) - this.pimsTimeInterval(intervalNumber-1)
+    }
+    return -interval/Math.log(this.retentionThreshold);
+  }
   newActivation(activation) {
     this.activations.push(new Activation(activation));
   }
-  score() {
-    // here's the crux of it:
+  stability(activationIndex) {
+
+    if (typeof activationIndex === undefined) {
+      activationIndex = this.activations.length - 1;
+    }
+    if (activationIndex > this.activations.length-1) {
+      throw new Error('critical error. stability requested for nonexistent activation index');
+    }
+    if (activationIndex === 0) {
+      return this.pimsStabilityInterval(0);
+    }
+    const sPrev = this.stability(activationIndex - 1);
+    const sIdeal = this.pimsStabilityInterval(activationIndex);
+    const dtIdeal = this.pimsTimeInterval(activationIndex) - this.pimsTimeInterval(activationIndex-1);
+    const dtActual = this.activations[activationIndex].endTime - this.activations[activationIndex-1].endTime;
+
+    return sPrev + (sIdeal - sPrev)*dtIdeal/dtActual;
+  } 
+  retrievability() {
     // https://en.wikipedia.org/wiki/Forgetting_curve
-
-
-    // look at all the activations and determine how primed this node is
-    // console.log('getting score for activations', this.activations);
-
-    // basic time interval based decay equation
-    if (!this.activations.length) {
-      return 0;
-    }
-    else {
-      // console.log('generating score based on activations', this.activations);
-      function getBaseLog(x, y) {
-        return Math.log(y) / Math.log(x);
-      }
-      this.activations.sort((a, b) => {
-        return a.startTime < b.endTime;
-      });
-
-      const timeNow = Date.now();
-
-      const adjustedDecayRate = this.activations.reduce((adjustedDecayRate, activation) => {
-        if (!activation.successful) return adjustedDecayRate;
-        const { startTime, endTime } = activation;
-        return adjustedDecayRate*((timeNow - startTime)/1000)/getBaseLog(1-adjustedDecayRate, 0.8);
-      }, this.initialDecayPerSecond);
-
-      const mostRecentActivation = this.activations[this.activations.length - 1];
-      const { startTime: mostRecentStartTime, endTime: mostRecentEndTime } = mostRecentActivation;
-      const mostRecentTimeInterval = (timeNow - mostRecentStartTime)/1000;
-
-      // console.log('calculating score. most recent time interval', mostRecentTimeInterval);
-      // console.log('remaining after period', (1 - adjustedDecayRate));
-      // console.log('number of periods', mostRecentTimeInterval);
-
-      let score = Math.pow(1 - adjustedDecayRate, mostRecentTimeInterval);
-      if (this.activations.length === 1) {
-        // console.log('decay rate is', this.initialDecayPerSecond);
-        score = Math.pow(1 - this.initialDecayPerSecond, mostRecentTimeInterval);
-      }
-      else {
-        // console.log('decay rate is', adjustedDecayRate);
-      }
-
-      // console.log('score', score)
-      return score;
-    }
-
-    // // basic binary ticker scoring method
-    // return this.activations.reduce((score, activation) => {
-    //   return activation.successful ? score+1 : score-1;
-    // }, 0);
+    const timeInterval = Date.now() - this.activations[this.activations.length-1].endTime;
+    return Math.E^(-timeInterval/this.stability());
   }
 }
 

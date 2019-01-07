@@ -31,16 +31,18 @@ class MemoryStore {
 
     // load the existing reviews into memory
     this.nodes = this.memoryUnits.reduce((nodes, { id, question, type, correctAnswer }) => {
-      nodes[id] = new MemoryNode({
-        unitId: id,
-        type,
-        value: correctAnswer,
-        represents: question,
-        activations: this.reviewsByMemoryUnit[id]
-      }, {
-        initialMemoryDecayRate
-      });
-      return nodes;
+      if (this.reviewsByMemoryUnit[id]) {
+        nodes[id] = new MemoryNode({
+          unitId: id,
+          type,
+          value: correctAnswer,
+          represents: question,
+          activations: this.reviewsByMemoryUnit[id]
+        }, {
+          initialMemoryDecayRate
+        });
+        return nodes;
+      }
     }, {});
   }
 
@@ -62,40 +64,27 @@ class MemoryStore {
     });
   }
 
-  getNextQuestion() {
-    // check memory store for weakest
-    let nodeWithLowestScore;
-    let lowestScore;
-
-    let nodeWithLowestScoreWithActivations;
-    let lowestScoreWithActivations = 10000;
+  getNodeWithLowestRetrievability() {
+    let nodeWithLowestRetrievability;
+    let lowestRetrievability;
     for (const id in this.nodes) {
-      const score = this.nodes[id].score();
-      console.log('score for id', id, score);
-      if (score < lowestScore || typeof lowestScore === 'undefined') {
-        lowestScore = score;
-        nodeWithLowestScore = id;
+      const retrievability = this.nodes[id].retrievability();
+      if (typeof lowestRetrievability === 'undefined'
+        || retrievability < lowestRetrievability
+      )
+      {
+        lowestRetrievability = retrievability;
+        nodeWithLowestRetrievability = node
       }
-      if (score < lowestScoreWithActivations && this.nodes[id].activations.length) {
-        lowestScoreWithActivations = score;
-        nodeWithLowestScoreWithActivations = id;
-      }
-    }
+    };
+    return this.nodes[nodeWithLowestRetrievability];
+  }
 
-    let nextQuestionId = nodeWithLowestScore;
-    let nextQuestionCurrentScore = lowestScore;
-    if (lowestScoreWithActivations < 0.8) {
-      nextQuestionId = nodeWithLowestScoreWithActivations;
-      nextQuestionCurrentScore = lowestScoreWithActivations;
-    }
-
-    console.log('next question id', nextQuestionId);
-    console.log('score of node of next question', nextQuestionCurrentScore);
-    const nextQuestion = this.memoryUnits.find(unit => +unit.id === +nextQuestionId);
-    // console.log('memory units', this.memoryUnits);
-    // console.log('node witih lowest score', nodeWithLowestScore);
-    // console.log('next question', nextQuestion);
-    return nextQuestion;
+  getNewMemoryUnit() {
+    // get a unit that hasn't been reviewed before
+    this.memoryUnits.find(unit => {
+      return !this.reviews.find(review => review.unitId === unit.id);
+    });
   }
 }
 

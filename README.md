@@ -50,6 +50,44 @@ these curves are based on transient memory deterioration, i.e. memory that
 fades over time. though, it is worth noting that according to at least one
 analysis, there are seven categories of memory failure (appendix a)
 
+the curve is described by the equation R = e ^ t/S
+
+where R is the retrievability, t is the time since last recalled, and S is the
+stability of the memory
+
+the tough thing about these curves is determining the correct value for S, the
+stability of a memory, particularly since S would ideally change as information
+is continuously reviewed at spaced intervals.
+
+to get a reasonable estimation, it is reasonable to look at the pimsleurian
+graduate level spaced interval found here:
+
+https://en.wikipedia.org/wiki/Spaced_repetition
+
+the interval is: 5 seconds, 25 seconds, 2 minutes, 10 minutes, 1 hour, 5 hours,
+1 day, 5 days, 25 days, 4 months, and 2 years
+
+one way to get S from this is the assume the the memory should always be
+refreshed once the value of R drops below 0.95
+
+with this limitation, S would have to start at 100, then upon review move to a
+number that allowed it to be at 0.95 again after about 20 seconds => 500
+
+we do this for all the intervals and see that S grows over time like this
+
+stability:
+
+reviewed at time elapsed        S before review
+
+learned                         0 (or maybe partial in some cases)
+5 seconds                       97.48
+25 seconds                      389.91
+120                             1754.62
+...
+
+which is exponential...
+
+https://en.wikipedia.org/wiki/Spaced_retrieval
 
 ### appendinx
 
