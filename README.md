@@ -1,4 +1,4 @@
-WARNING: This is not yet functional
+WARNING: This is not yet functional. Coming soon :)
 --
 
 # mem
@@ -131,12 +131,8 @@ there are seven categories of memory failure, and 2 kinds:
 
 
 
-
-
+## Background
 
 the goal of this program is to remember as much correct and relevant
 information as is possible, in a way that is highly structured and relatable,
 so its relations can also be mapped, studied, and remembered.
-
-
-
