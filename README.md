@@ -1,4 +1,4 @@
-~~~This is not yet functional~~~
+WARNING: This is not yet functional
 --
 
 # mem
