@@ -73,23 +73,14 @@ the intervals are: 5 seconds, 25 seconds, 2 minutes, 10 minutes, 1 hour, 5 hours
 one way to get S from this is the assume the the memory should always be
 refreshed once the value of R drops below 0.95
 
-with this limitation, S would have to start at 100, then upon review move to a
-number that allowed it to be at 0.95 again after about 20 seconds => 500
+from the equation for R, S can be seen as:
 
-we do this for all the intervals and see that S grows over time like this
+S = -t/ln(R)
 
-stability:
-```
-reviewed at time elapsed        S before review
+so, to be at 95% at 5 seconds, S would have to be S = -5/ln(0.95) = 97.48
 
-learned                         0 (or maybe partial in some cases)
-5 seconds                       97.48
-25 seconds                      389.91
-120                             1754.62
-...
-```
-
-which is exponential...
+S continues to grow to 389.91 for 25 seconds, 1852.09 for 120 seconds, and
+9357.95 for 600 seconds. This goes on to display an exponential rise
 
 https://en.wikipedia.org/wiki/Spaced_retrieval
 
