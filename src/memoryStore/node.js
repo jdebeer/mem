@@ -1,7 +1,7 @@
 const Activation = require('./activation');
 
 class MemoryNode {
-  constructor({ activations = [], unitId, type, value, represents }, config) {
+  constructor({ activations = [], unitId, type, value, represents }) {
 
     this.retentionThreshold = 0.95; // A+
 
@@ -10,7 +10,6 @@ class MemoryNode {
     this.type = type;
     this.unitId = unitId;
 
-    this.initialDecayPerSecond = config.initialMemoryDecayRate;
     this.activations = activations.map(activation => {
       return new Activation(activation);
     })
@@ -50,7 +49,7 @@ class MemoryNode {
   }
   stability(activationIndex) {
 
-    if (typeof activationIndex === undefined) {
+    if (typeof activationIndex === 'undefined') {
       activationIndex = this.activations.length - 1;
     }
     if (activationIndex > this.activations.length-1) {
@@ -59,6 +58,7 @@ class MemoryNode {
     if (activationIndex === 0) {
       return this.pimsStabilityInterval(0);
     }
+
     const sPrev = this.stability(activationIndex - 1);
     const sIdeal = this.pimsStabilityInterval(activationIndex);
     const dtIdeal = this.pimsTimeInterval(activationIndex) - this.pimsTimeInterval(activationIndex-1);
@@ -68,8 +68,10 @@ class MemoryNode {
   } 
   retrievability() {
     // https://en.wikipedia.org/wiki/Forgetting_curve
-    const timeInterval = Date.now() - this.activations[this.activations.length-1].endTime;
-    return Math.E^(-timeInterval/this.stability());
+    const timeInterval = (Date.now() - this.activations[this.activations.length-1].endTime)/1000;
+    const stability = this.stability();
+    const retrievability = Math.exp(-timeInterval/stability);
+    return retrievability;
   }
 }
 

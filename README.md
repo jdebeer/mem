@@ -53,7 +53,7 @@ these curves are based on transient memory deterioration, i.e. memory that
 fades over time. though, it is worth noting that according to at least one
 analysis, there are seven categories of memory failure (appendix a)
 
-the curve is described by the equation R = e ^ t/S
+the curve is described by the equation R = e ^ -t/S
 
 where R is the retrievability, t is the time since last recalled, and S is the
 stability of the memory

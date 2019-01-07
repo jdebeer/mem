@@ -8,16 +8,24 @@ class ReviewProgram {
   getNextQuestion() {
     let nextQuestion;
     const nodeWithLowestR = this.memoryStore.getNodeWithLowestRetrievability();
-    if (nodeWithLowestR.retrievability > this.retentionThreshold) {
+    if (!nodeWithLowestR
+      || nodeWithLowestR.retrievability() > this.retentionThreshold
+    ) {
       nextQuestion = this.memoryStore.getNewMemoryUnit();
       if (!nextQuestion) {
-        return console.log('out of new memory units');
+        console.log('out of new memory units');
+        return false;
       }
     }
-    else nextQuestion = nodeWithLowestR;
+    else nextQuestion = this.memoryStore.memoryUnits.find(unit =>
+      unit.id === nodeWithLowestR.unitId);
+    return nextQuestion;
   }
   continue() {
     const nextQuestion = this.getNextQuestion();
+    if (!nextQuestion) {
+      return console.log('ending program');
+    }
     const prompt = new QuestionAnswerCycle({ question: nextQuestion });
     const startTime = Date.now();
     prompt.start().then(activation => {
@@ -28,7 +36,10 @@ class ReviewProgram {
         endTime: Date.now()
       });
       this.continue();
-    });
+    })
+    .catch(err => {
+      console.error(err);
+    })
   }
   start() {
     this.continue();

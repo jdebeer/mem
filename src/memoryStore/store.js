@@ -4,8 +4,7 @@ const fs = require('fs');
 class MemoryStore {
   constructor({
     strategy,
-    memoryFolderPath,
-    initialMemoryDecayRate = 0.0008
+    memoryFolderPath
   }) {
     this.strategy = strategy;
     this.memoryFolderPath = memoryFolderPath;
@@ -38,18 +37,25 @@ class MemoryStore {
           value: correctAnswer,
           represents: question,
           activations: this.reviewsByMemoryUnit[id]
-        }, {
-          initialMemoryDecayRate
         });
-        return nodes;
       }
-    }, {});
+      return nodes;
+    }, {}) || {};
   }
 
   newActivation(activation) {
     const { unitId } = activation;
-    // update the in-memory review store
-    console.log('saving new activation', activation);
+    const { type, correctAnswer, question } = this.memoryUnits.find(unit => unit.id === unitId);
+
+    if (!this.nodes[unitId]) {
+      this.nodes[unitId] = new MemoryNode({
+        unitId,
+        type,
+        value: correctAnswer,
+        represents: question,
+        activations: []
+      });
+    }
     this.nodes[unitId].newActivation(activation);
     this.reviews.push(activation);
     // update the persistent review store
@@ -60,11 +66,12 @@ class MemoryStore {
 
   getState() {
     const table = Object.values(this.nodes).map(node => {
-      console.log(node.score(), node.represents, node.activations.length);
+      console.log(node.retrievability(), node.represents, node.activations.length);
     });
   }
 
   getNodeWithLowestRetrievability() {
+    if (!this.nodes) return null;
     let nodeWithLowestRetrievability;
     let lowestRetrievability;
     for (const id in this.nodes) {
@@ -74,7 +81,7 @@ class MemoryStore {
       )
       {
         lowestRetrievability = retrievability;
-        nodeWithLowestRetrievability = node
+        nodeWithLowestRetrievability = id;
       }
     };
     return this.nodes[nodeWithLowestRetrievability];
@@ -82,7 +89,7 @@ class MemoryStore {
 
   getNewMemoryUnit() {
     // get a unit that hasn't been reviewed before
-    this.memoryUnits.find(unit => {
+    return this.memoryUnits.find(unit => {
       return !this.reviews.find(review => review.unitId === unit.id);
     });
   }
