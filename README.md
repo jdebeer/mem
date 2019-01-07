@@ -64,7 +64,7 @@ graduate level spaced interval found here:
 
 https://en.wikipedia.org/wiki/Spaced_repetition
 
-the interval is: 5 seconds, 25 seconds, 2 minutes, 10 minutes, 1 hour, 5 hours,
+the intervals are: 5 seconds, 25 seconds, 2 minutes, 10 minutes, 1 hour, 5 hours,
 1 day, 5 days, 25 days, 4 months, and 2 years
 
 one way to get S from this is the assume the the memory should always be
@@ -76,7 +76,7 @@ number that allowed it to be at 0.95 again after about 20 seconds => 500
 we do this for all the intervals and see that S grows over time like this
 
 stability:
-
+```
 reviewed at time elapsed        S before review
 
 learned                         0 (or maybe partial in some cases)
@@ -84,12 +84,13 @@ learned                         0 (or maybe partial in some cases)
 25 seconds                      389.91
 120                             1754.62
 ...
+```
 
 which is exponential...
 
 https://en.wikipedia.org/wiki/Spaced_retrieval
 
-### appendinx
+### appendix
 
 #### a) the seven kinds of memory failure
 
