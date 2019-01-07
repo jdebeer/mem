@@ -1,3 +1,7 @@
+--
+This is not yet functional
+--
+
 # mem
 
 commit and persist structured information in your human memory
