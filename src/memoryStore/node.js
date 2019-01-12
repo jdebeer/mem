@@ -5,6 +5,9 @@ class MemoryNode {
 
     this.retentionThreshold = 0.95; // A+
 
+    // this.retentionThreshold = 0.5; // half
+
+
     this.represents = represents;
     this.value = value;
     this.type = type;

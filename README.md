@@ -11,7 +11,6 @@ commit and persist structured information in your human memory
 ### then if you want to store memory locally
 `mem review`
 
-
 ## theory
 
 ### remembering, i.e. not forgetting
@@ -76,10 +75,42 @@ S = -t/ln(R)
 
 so, to be at 95% at 5 seconds, S would have to be S = -5/ln(0.95) = 97.48
 
-S continues to grow to 389.91 for 25 seconds, 1852.09 for 120 seconds, and
-9357.95 for 600 seconds. This goes on to display an exponential rise
+S continues to grow to 389.91 for 20 seconds (25 seconds elapsed), 1852.09
+for 95 seconds (2 minutes elapsed), and 9357.95 for 480 seconds (10 minutes
+elapsed). This goes on to display an exponential rise over the number of
+review periods at correctly spaced time intervals...
+
+the problem with this is that it's hard to use if the person doesn't encounter
+the particular set of information at these time intervals. in these cases, what
+is S, stability?
+
+the thing is, S is really a differential equation; it is a function of other
+variables and itself with those variables at some set of values, such as itself
+at a previous time. in other words:
+
+S' = f(S, t) 
+
+and that's only if you include time as the essential parameter, which is most
+likely not the only determinant of S. and it's important to remember S is a
+made up idea; there may be no stability of information in our brains as we
+look at it here (though information can certainly be "stable", within other
+parameters, in terms of our regular definition of "stable"). so, s could also
+be (and most certainly is) a factor of it's actual subject matter, the size of
+the information, the amount of information already contained along with the
+respective stability of all that other information, and the meaningfulness of
+the information or otherwise its emotional connections.
+
+it would be beautiful to see all these factors playing together in a program.
+perhaps that is the eventual goal of this program and its parents. but let it
+suffice for now that this program uses a time series as its sole determinant of
+retrievability of information.
+
+getting back to the problem, S' will have to be determined in greater accuracy
+as this program develops. 
+
 
 https://en.wikipedia.org/wiki/Spaced_retrieval
+
 
 ### appendix
 
