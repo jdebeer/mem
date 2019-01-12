@@ -105,9 +105,17 @@ perhaps that is the eventual goal of this program and its parents. but let it
 suffice for now that this program uses a time series as its sole determinant of
 retrievability of information.
 
-getting back to the problem, S' will have to be determined in greater accuracy
-as this program develops. 
+getting back to the problem, S' must be determined with increasing accuracy as
+this program develops. as such, i've just brushed off my college text on
+differential equations and am also exploring the works of:
 
+1. [Piotr Wozniak](https://en.wikipedia.org/wiki/Piotr_Wo%C5%BAniak_(researcher))
+2. [Paul Pimsleur](https://en.wikipedia.org/wiki/Paul_Pimsleur)
+3. [Hermann Ebbinghaus](https://en.wikipedia.org/wiki/Hermann_Ebbinghaus)
+4. [Lee Averell](http://newcastle-au.academia.edu/LeeAverell)
+5. [Andrew Heathcote](http://www.tascl.org/andrew-heathcote.html)
+6. [Geoffrey Loftus](https://en.wikipedia.org/wiki/Geoffrey_Loftus)
+7. [Daniel Schacter](https://en.wikipedia.org/wiki/Daniel_Schacter)
 
 https://en.wikipedia.org/wiki/Spaced_retrieval
 
