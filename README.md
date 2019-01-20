@@ -110,6 +110,8 @@ this program develops. as such, i've just brushed off my college text on
 differential equations and am also exploring the works of:
 
 1. [Piotr Wozniak](https://en.wikipedia.org/wiki/Piotr_Wo%C5%BAniak_(researcher))
+    - https://www.wired.com/2008/04/ff-wozniak/?currentPage=all
+    - https://www.supermemo.com/en/articles/history
 2. [Paul Pimsleur](https://en.wikipedia.org/wiki/Paul_Pimsleur)
 3. [Hermann Ebbinghaus](https://en.wikipedia.org/wiki/Hermann_Ebbinghaus)
 4. [Lee Averell](http://newcastle-au.academia.edu/LeeAverell)

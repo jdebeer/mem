@@ -89,9 +89,6 @@
     "type": "multiple",
     "correctAnswer": ["Chad", "Mali", "Mauritania", "Niger", "Sudan"]
   },
-
-
-
   {
     "id": 16,
     "question": "How many geographic Regions are there in Europe",
@@ -152,10 +149,6 @@
     "type": "multiple",
     "correctAnswer": ["Austria", "Belgium", "France", "Germany", "Liechtenstein", "Luxembourg", "Netherlands", "Switzerland"]
   },
-
-
-
-
   {
     "id": 26,
     "question": "How many geographic Regions are there in Asia",
@@ -235,7 +228,6 @@
     "correctAnswer": ["Kazakhstan", "Kyrgyzstan", "Tajikistan", "Turkmenistan", "Uzbekistan"]
   },
 
-
   {
     "id": 39,
     "question": "How many countries are there in South America",
@@ -247,5 +239,125 @@
     "question": "Name all the countries in the South America",
     "type": "multiple",
     "correctAnswer": ["Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador", "Guyana", "Paraguay", "Peru", "Suriname", "Uruguay", "Venezuela"]
+  },
+  {
+    "id": 41,
+    "question": "How many countries are there in Asia?",
+    "type": "single",
+    "correctAnswer": 48
+  },
+  {
+    "id": 42,
+    "question": "How many countries are there in Europe?",
+    "type": "single",
+    "correctAnswer": 44
+  },
+  {
+    "id": 43,
+    "question": "How many countries are there in North America?",
+    "type": "single",
+    "correctAnswer": 23
+  },
+  {
+    "id": 44,
+    "question": "How many regions are there in North America?",
+    "type": "single",
+    "correctAnswer": 3
+  },
+  {
+    "id": 45,
+    "question": "Name all the regions in North America?",
+    "type": "multiple",
+    "correctAnswer": ["Mainland", "Northern Caribbean Islands", "Southern Caribbean Islands"]
+  },
+  {
+    "id": 46,
+    "question": "How many countries are in the mainland region of North America?",
+    "type": "single",
+    "correctAnswer": 10
+  },
+  {
+    "id": 47,
+    "question": "Name all the countries in the mainland region of North America",
+    "type": "multiple",
+    "correctAnswer": ["Canada", "United States of America (USA)", "Mexico", "Guatemala", "Belize", "El Salvador", "Honduras", "Nicaragua", "Costa Rica", "Panama"]
+  },
+  {
+    "id": 48,
+    "question": "How many countries are in the Northern Caribbean Islands region of North America?",
+    "type": "single",
+    "correctAnswer": 7
+  },
+  {
+    "id": 49,
+    "question": "Name all the countries in the Northern Caribbean Islands region of North America",
+    "type": "multiple",
+    "correctAnswer": ["Antigua and Barbuda", "Bahamas", "Cuba", "Dominican Republic", "Haiti", "Jamaica", "Saint Kitts and Nevis"]
+  },
+  {
+    "id": 50,
+    "question": "How many countries are in the Southern Caribbean Islands region of North America?",
+    "type": "single",
+    "correctAnswer": 6
+  },
+  {
+    "id": 51,
+    "question": "Name all the countries in the Southern Caribbean Islands region of North America",
+    "type": "multiple",
+    "correctAnswer": ["Barbados", "Dominica", "Grenada", "Saint Lucia", "Saint Vincent and the Grenadines", "Trinidad and Tobago"]
+  },
+  {
+    "id": 52,
+    "question": "How many countries are there in Oceania?",
+    "type": "single",
+    "correctAnswer": 14
+  },
+  {
+    "id": 53,
+    "question": "How many regions are there in Oceania?",
+    "type": "single",
+    "correctAnswer": 3
+  },
+  {
+    "id": 54,
+    "question": "Name all the regions in Oceania",
+    "type": "multiple",
+    "correctAnswer": ["Mainland", "Northern Pacific Islands", "Southern Pacific Islands"]
+  },
+  {
+    "id": 55,
+    "question": "How many countries are in the mainland region of Oceania?",
+    "type": "single",
+    "correctAnswer": 1
+  },
+  {
+    "id": 56,
+    "question": "Name all the countries in the mainland region of Oceania",
+    "type": "single",
+    "correctAnswer": "Australia"
+  },
+  {
+    "id": 57,
+    "question": "How many countries are in the Northern Pacific Islands region of Oceania?",
+    "type": "single",
+    "correctAnswer": 5
+  },
+  {
+    "id": 58,
+    "question": "Name all the countries in the Northern Pacific Islands region of Oceania",
+    "type": "multiple",
+    "correctAnswer": ["Kiribati", "Marshall Islands", "Micronesia", "Nauru", "Papua New Guinea"]
+  },
+  {
+    "id": 59,
+    "question": "How many countries are in the Southern Pacific Islands region of Oceania?",
+    "type": "single",
+    "correctAnswer": 8
+  },
+  {
+    "id": 60,
+    "question": "Name all the countries in the Southern Pacific Islands region of Oceania",
+    "type": "multiple",
+    "correctAnswer": ["Fiji", "New Zealand", "Palau", "Samoa", "Solomon Islands", "Tonga", "Tuvalu", "Vanuatu"]
   }
 ]

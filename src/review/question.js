@@ -20,11 +20,11 @@ class Question {
     let correct = false;
     if (this.type === 'single') {
       if (answer === ''+this.correctAnswer) {
-        console.log('correct');
+        console.log('correct\n');
         correct = true;
       }
       else {
-        console.log('incorrect');
+        console.log('incorrect\n');
       }
     }
     else if (this.type === 'multiple') {
@@ -35,7 +35,13 @@ class Question {
         this.givenAnswers.push(answer);
       }
       if (this.correctAnswer.includes(answer)) {
+        if (this.givenAnswers.length === this.correctAnswer.length) {
+          console.log("correct\n");
+        }
         correct = true;
+      }
+      else {
+        console.log("incorrect\n");
       }
     }
     return correct;

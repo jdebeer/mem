@@ -7,6 +7,12 @@ class ReviewProgram {
   }
   getNextQuestion() {
     let nextQuestion;
+    if (this.presetNextQuestion) {
+      nextQuestion = this.memoryStore.memoryUnits.find(unit =>
+        unit.id === this.presetNextQuestion);
+      delete this.presetNextQuestion;
+      return nextQuestion;
+    }
     const nodeWithLowestR = this.memoryStore.getNodeWithLowestRetrievability();
     if (!nodeWithLowestR
       || nodeWithLowestR.retrievability() > this.retentionThreshold
@@ -26,9 +32,20 @@ class ReviewProgram {
     if (!nextQuestion) {
       return console.log('ending program');
     }
+    if (!this.memoryStore.nodes[nextQuestion.id]) {
+      console.log("the answer to this question is", nextQuestion.answer);
+    }
     const prompt = new QuestionAnswerCycle({ question: nextQuestion });
     const startTime = Date.now();
     prompt.start().then(activation => {
+      if (!activation.correct) {
+        this.presetNextQuestion = nextQuestion.id;
+      }
+      // if this is the first activation and it's not succesful, don't add an activation
+      // theoretical basis: for a node to be marked as existing, it must initially be fully formed
+      if (!activation.correct && !this.memoryStore.nodes[nextQuestion.id]) {
+        return this.continue();
+      }
       this.memoryStore.newActivation({
         successful: activation.correct,
         unitId: nextQuestion.id,

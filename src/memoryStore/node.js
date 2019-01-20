@@ -5,9 +5,6 @@ class MemoryNode {
 
     this.retentionThreshold = 0.95; // A+
 
-    // this.retentionThreshold = 0.5; // half
-
-
     this.represents = represents;
     this.value = value;
     this.type = type;
@@ -61,8 +58,10 @@ class MemoryNode {
     if (activationIndex === 0) {
       return this.pimsStabilityInterval(0);
     }
-
     const sPrev = this.stability(activationIndex - 1);
+    if (!this.activations[activationIndex].successful) {
+      return sPrev;
+    }
     const sIdeal = this.pimsStabilityInterval(activationIndex);
     const dtIdeal = this.pimsTimeInterval(activationIndex) - this.pimsTimeInterval(activationIndex-1);
     const dtActual = this.activations[activationIndex].endTime - this.activations[activationIndex-1].endTime;
